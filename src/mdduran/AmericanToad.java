@@ -136,60 +136,60 @@ public class AmericanToad extends Solitaire {
 		wastePileView.setMouseAdapter(new AmericanToadWastePileController (this,wastePileView));//at point 15:10 of rb video 3
 		wastePileView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		wastePileView.setUndoAdapter(new SolitaireUndoAdapter(this));
-		//reserve column controllers
-		reserveColumnView.setMouseAdapter(new AmericanToadReserveColumnController (this, deck, reserveColumn));
-		reserveColumnView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		reserveColumnView.setUndoAdapter(new SolitaireUndoAdapter(this));
-		//foundation pile controllers
-		foundationView1.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation1));
-		foundationView2.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation2));
-		foundationView3.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation3));
-		foundationView4.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation4));
-		foundationView5.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation5));
-		foundationView6.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation6));
-		foundationView7.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation7));
-		foundationView8.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation8));
-		foundationView1.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView2.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView3.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView4.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView5.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView6.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView7.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView8.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		foundationView1.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView2.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView3.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView4.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView5.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView6.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView7.setUndoAdapter(new SolitaireUndoAdapter(this));
-		foundationView8.setUndoAdapter(new SolitaireUndoAdapter(this));
-		//tableau column controllers
-		tableauView1.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau1));
-		tableauView2.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau2));
-		tableauView3.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau3));
-		tableauView4.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau4));
-		tableauView5.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau5));
-		tableauView6.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau6));
-		tableauView7.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau7));
-		tableauView8.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau8));
-		tableauView1.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView2.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView3.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView4.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView5.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView6.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView7.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView8.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-		tableauView1.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView2.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView3.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView4.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView5.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView6.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView7.setUndoAdapter(new SolitaireUndoAdapter(this));
-		tableauView8.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		//reserve column controllers
+//		reserveColumnView.setMouseAdapter(new AmericanToadReserveColumnController (this, deck, reserveColumn));
+//		reserveColumnView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		reserveColumnView.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		//foundation pile controllers
+//		foundationView1.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation1));
+//		foundationView2.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation2));
+//		foundationView3.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation3));
+//		foundationView4.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation4));
+//		foundationView5.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation5));
+//		foundationView6.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation6));
+//		foundationView7.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation7));
+//		foundationView8.setMouseAdapter(new AmericanToadFoundationController(this, deck, foundation8));
+//		foundationView1.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView2.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView3.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView4.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView5.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView6.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView7.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView8.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		foundationView1.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView2.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView3.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView4.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView5.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView6.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView7.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		foundationView8.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		//tableau column controllers
+//		tableauView1.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau1));
+//		tableauView2.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau2));
+//		tableauView3.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau3));
+//		tableauView4.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau4));
+//		tableauView5.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau5));
+//		tableauView6.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau6));
+//		tableauView7.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau7));
+//		tableauView8.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau8));
+//		tableauView1.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView2.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView3.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView4.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView5.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView6.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView7.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView8.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+//		tableauView1.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView2.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView3.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView4.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView5.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView6.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView7.setUndoAdapter(new SolitaireUndoAdapter(this));
+//		tableauView8.setUndoAdapter(new SolitaireUndoAdapter(this));
 	}
 	public Dimension getPreferredSize() {//overrides parent method
 		// default starting dimensions...

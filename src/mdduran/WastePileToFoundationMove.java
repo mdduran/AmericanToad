@@ -2,7 +2,6 @@ package mdduran;
 
 import ks.common.games.Solitaire;
 import ks.common.model.Card;
-import ks.common.model.Move;
 import ks.common.model.Pile;
 
 /**
@@ -10,17 +9,15 @@ import ks.common.model.Pile;
  * @author Marco
  *
  */
-public class WastePileToFoundationMove extends Move {
+public class WastePileToFoundationMove extends FoundationMove {
 	Pile wastePile;
 	Card cardBeingDragged;
 	Pile foundation;
-	boolean isHigherRank;
+	int rankOfFoundation;
 	
-	public WastePileToFoundationMove(Pile from,Card cardBeingDragged, Pile to, boolean isHigherRank){
+	public WastePileToFoundationMove(Pile from,Card cardBeingDragged, Pile to, int rankOfFoundation){
+		super(from, cardBeingDragged, to, rankOfFoundation);
 		this.wastePile = from;
-		this.cardBeingDragged = cardBeingDragged;
-		this.foundation = to;
-		this.isHigherRank = isHigherRank;
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
@@ -49,14 +46,12 @@ public class WastePileToFoundationMove extends Move {
 
 	@Override
 	public boolean valid(Solitaire game) {
-		// TODO Auto-generated method stub
-		boolean draggingHigherCard = true;
-		if(wastePile.empty()) return false;
-		if(!isHigherRank && draggingHigherCard && cardBeingDragged.oppositeColor(foundation.get()) ){
+		
+		if(cardBeingDragged.getRank() > foundation.suit()&& !cardBeingDragged.oppositeColor(foundation.get()) ){
 			return true;
 		}
-		if(cardBeingDragged.getSuit() == foundation.suit() && !cardBeingDragged.oppositeColor(foundation.get())){
-			return false;
+		if(cardBeingDragged.getRank() == rankOfFoundation && foundation.empty()){
+			return true;
 		}
 		return false;
 		
