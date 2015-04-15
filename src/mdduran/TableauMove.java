@@ -2,21 +2,21 @@ package mdduran;
 
 import ks.common.games.Solitaire;
 import ks.common.model.Card;
+import ks.common.model.Column;
 import ks.common.model.Move;
-import ks.common.model.Pile;
 import ks.common.model.Stack;
 
-public abstract class FoundationMove extends Move {
-	Pile foundationPile;
+public abstract class TableauMove extends Move {
+	Column tableau;
 	Stack stack;
-	int rankOfFoundation;
+	int rankOfTableau;
 	Card cardBeingMoved;
 	
-	public FoundationMove(Stack from, Card cardBeingMoved, Pile to, int rankOfFoundation){
+	public TableauMove(Stack from, Card cardBeingMoved, Column to, int rankOfTableau){
 		this.stack = from;
 		this.cardBeingMoved = cardBeingMoved;
-		this.foundationPile = to;
-		this.rankOfFoundation = rankOfFoundation;
+		this.tableau = to;
+		this.rankOfTableau = rankOfTableau;
 	}
 	
 	@Override
@@ -24,7 +24,7 @@ public abstract class FoundationMove extends Move {
 		if(!valid(game)){return false;}
 		//take card off of the top of the stack
 		Card c = stack.get();
-		foundationPile.add(c);
+		tableau.add(c);
 		game.updateScore(+1);
 		return true;
 	}
@@ -32,7 +32,7 @@ public abstract class FoundationMove extends Move {
 	@Override
 	public boolean undo(Solitaire game) {
 		if(!valid(game)){return false;}
-		Card c = foundationPile.get();
+		Card c = tableau.get();
 		stack.add(c);
 		game.updateScore(-1);
 		return true;
@@ -40,13 +40,12 @@ public abstract class FoundationMove extends Move {
 
 	@Override
 	public boolean valid(Solitaire game) {
-		if(cardBeingMoved.getRank() > foundationPile.rank() && !cardBeingMoved.oppositeColor(foundationPile.get())){
+		if(cardBeingMoved.getRank() < tableau.rank() && !cardBeingMoved.oppositeColor(tableau.get())){
 			return true;
 		}
-		if(cardBeingMoved.getRank() == rankOfFoundation && foundationPile.empty()){
+		if(cardBeingMoved.getRank() == rankOfTableau && tableau.empty()){
 			return true;
 		}
 		return false;
 	}
-	
 }
