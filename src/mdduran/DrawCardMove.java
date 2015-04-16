@@ -5,7 +5,6 @@ import ks.common.model.Card;
 import ks.common.model.Move;
 import ks.common.model.MultiDeck;
 import ks.common.model.Pile;
-import ks.common.model.Stack;
 /**
  * Move cards from top of deck to top of waste pile
  * @author Marco Duran

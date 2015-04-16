@@ -166,30 +166,30 @@ public class AmericanToad extends Solitaire {
 		foundationView7.setUndoAdapter(new SolitaireUndoAdapter(this));
 		foundationView8.setUndoAdapter(new SolitaireUndoAdapter(this));
 //		//tableau column controllers
-//		tableauView1.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau1));
-//		tableauView2.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau2));
-//		tableauView3.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau3));
-//		tableauView4.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau4));
-//		tableauView5.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau5));
-//		tableauView6.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau6));
-//		tableauView7.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau7));
-//		tableauView8.setMouseAdapter(new AmericanToadTableauController(this, deck, tableau8));
-//		tableauView1.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView2.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView3.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView4.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView5.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView6.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView7.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView8.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		tableauView1.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView2.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView3.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView4.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView5.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView6.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView7.setUndoAdapter(new SolitaireUndoAdapter(this));
-//		tableauView8.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView1.setMouseAdapter(new AmericanToadTableauController(this, tableauView1));
+		tableauView2.setMouseAdapter(new AmericanToadTableauController(this, tableauView2));
+		tableauView3.setMouseAdapter(new AmericanToadTableauController(this, tableauView3));
+		tableauView4.setMouseAdapter(new AmericanToadTableauController(this, tableauView4));
+		tableauView5.setMouseAdapter(new AmericanToadTableauController(this, tableauView5));
+		tableauView6.setMouseAdapter(new AmericanToadTableauController(this, tableauView6));
+		tableauView7.setMouseAdapter(new AmericanToadTableauController(this, tableauView7));
+		tableauView8.setMouseAdapter(new AmericanToadTableauController(this, tableauView8));
+		tableauView1.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView2.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView3.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView4.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView5.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView6.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView7.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView8.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		tableauView1.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView2.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView3.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView4.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView5.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView6.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView7.setUndoAdapter(new SolitaireUndoAdapter(this));
+		tableauView8.setUndoAdapter(new SolitaireUndoAdapter(this));
 	}
 	public Dimension getPreferredSize() {//overrides parent method
 		// default starting dimensions...
