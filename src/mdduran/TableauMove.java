@@ -1,24 +1,29 @@
 package mdduran;
 
 import ks.common.games.Solitaire;
+import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
 import ks.common.model.Stack;
 
-public abstract class TableauMove extends Move {
-	Column tableau;
-	Stack stack;
+public class TableauMove extends Move {
+	BuildablePile tableau;
+	BuildablePile stack;
 	int rankOfTableau;
 	Card cardBeingMoved;
 	
-	public TableauMove(Stack from, Card cardBeingMoved, Column to, int rankOfTableau){
+	public TableauMove(BuildablePile from, Card cardBeingMoved, BuildablePile to, int rankOfTableau){
 		this.stack = from;
 		this.cardBeingMoved = cardBeingMoved;
 		this.tableau = to;
 		this.rankOfTableau = rankOfTableau;
 	}
 	
+	public TableauMove(BuildablePile fromPile, Card peek, BuildablePile tableau2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public boolean doMove(Solitaire game) {
 		if(!valid(game) && stack.empty()){return false;}

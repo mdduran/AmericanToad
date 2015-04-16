@@ -1,7 +1,5 @@
 package mdduran;
 
-import heineman.klondike.MoveCardToFoundationMove;
-import heineman.klondike.MoveWasteToFoundationMove;
 
 import java.awt.event.MouseEvent;
 
@@ -80,7 +78,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 						if (col.count() != 1) {
 							fromWidget.returnWidget (draggingWidget);  // return home
 						} else {
-							Move m = new MoveCardToFoundationMove (fromPile, col.peek(), foundation);
+							Move m = new FoundationMove(fromPile, col.peek(), foundation, foundation.get().getRank());
 
 							if (m.doMove (theGame)) {
 								// Success
@@ -103,7 +101,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 						}
 
 						// must use peek() so we don't modify col prematurely
-						Move m = new MoveWasteToFoundationMove (wastePile, theCard, foundation);
+						FoundationMove m = new WastePileToFoundationMove(wastePile, theCard, foundation, foundation.get().getRank());
 						if (m.doMove (theGame)) {
 							// Success
 							theGame.pushMove (m);

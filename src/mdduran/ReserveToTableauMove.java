@@ -1,11 +1,11 @@
 package mdduran;
 
+import ks.common.model.BuildablePile;
 import ks.common.model.Card;
-import ks.common.model.Column;
 
 public class ReserveToTableauMove extends TableauMove {
-	Column reserve;
-	public ReserveToTableauMove(Column from, Card cardBeingMoved, Column to,
+	BuildablePile reserve;
+	public ReserveToTableauMove(BuildablePile from, Card cardBeingMoved, BuildablePile to,
 			int rankOfTableau) {
 		super(from, cardBeingMoved, to, rankOfTableau);
 		this.reserve = from;

@@ -6,7 +6,7 @@ import ks.common.model.Move;
 import ks.common.model.Pile;
 import ks.common.model.Stack;
 
-public abstract class FoundationMove extends Move {
+public class FoundationMove extends Move {
 	Pile foundationPile;
 	Stack stack;
 	int rankOfFoundation;
