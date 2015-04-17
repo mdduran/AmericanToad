@@ -18,36 +18,34 @@ public class TableauMove extends Move {
 		this.rankOfTableau = rankOfTableau;
 	}
 	
-	public TableauMove(BuildablePile fromPile, Card peek, BuildablePile tableau2) {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	@Override
 	public boolean doMove(Solitaire game) {
 		if(!valid(game) && stack.empty()){return false;}
 		//take card off of the top of the stack
-		Card c = stack.get();
-		tableau.add(c);
-		game.updateScore(+1);
+		/*Card c = stack.get();
+		tableau.add(c);*/
+		Card c = tableau.get();
+		stack.add(c);
 		return true;
 	}
 
 	@Override
 	public boolean undo(Solitaire game) {
 		if(!valid(game)){return false;}
-		Card c = tableau.get();
-		stack.add(c);
-		game.updateScore(-1);
+		Card c = stack.get();
+		tableau.add(c);
 		return true;
 	}
 
 	@Override
-	public boolean valid(Solitaire game) {
+	public boolean valid(Solitaire game) {//fix logic
 		if(cardBeingMoved.getRank() < tableau.rank() && !cardBeingMoved.oppositeColor(tableau.get())){
 			return true;
 		}
 		if(cardBeingMoved.getRank() == rankOfTableau && tableau.empty()){
-			return true;
+			return true;//fix it here TODO
 		}
 		return false;
 	}

@@ -48,6 +48,11 @@ public class AmericanToad extends Solitaire {
 		initializeView();
 		initializeControllers();
 		
+		//make a for loop to deal cards to each of the tableau piles
+		//make a for loop to deal 19 cards to the reserve pile
+		//deal one card to the first foundation pile
+		//deal one card to the waste pile
+		
 		updateScore(0);
 		
 	}
@@ -137,9 +142,9 @@ public class AmericanToad extends Solitaire {
 		wastePileView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
 		wastePileView.setUndoAdapter(new SolitaireUndoAdapter(this));
 //		//reserve column controllers
-//		reserveColumnView.setMouseAdapter(new AmericanToadReserveColumnController (this, deck, reserveColumn));
-//		reserveColumnView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
-//		reserveColumnView.setUndoAdapter(new SolitaireUndoAdapter(this));
+		reserveColumnView.setMouseAdapter(new AmericanToadReserveController (this, reserveColumnView));
+		reserveColumnView.setMouseMotionAdapter(new SolitaireMouseMotionAdapter(this));
+		reserveColumnView.setUndoAdapter(new SolitaireUndoAdapter(this));
 //		//foundation pile controllers
 		foundationView1.setMouseAdapter(new AmericanToadFoundationController(this, foundationView1));
 		foundationView2.setMouseAdapter(new AmericanToadFoundationController(this, foundationView2));

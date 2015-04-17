@@ -27,6 +27,5 @@ public class TestDrawCardMove extends TestCase {
 		dcm.undo(americanToad);
 		
 		assertEquals(104, americanToad.deck.count());
-		
 	}
 }

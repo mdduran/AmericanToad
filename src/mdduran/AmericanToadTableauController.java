@@ -71,7 +71,7 @@ public class AmericanToadTableauController extends java.awt.event.MouseAdapter {
 			if (col.count() != 1) {
 				fromWidget.returnWidget (draggingWidget);  // return home
 			} else {
-				Move m = new TableauMove(fromPile, col.peek(), tableau);
+				Move m = new TableauMove(fromPile, col.peek(), tableau, tableau.get().getRank());
 				if(m.doMove (theGame)){
 					//Success
 					theGame.pushMove(m);
