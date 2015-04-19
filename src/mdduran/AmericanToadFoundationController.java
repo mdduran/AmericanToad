@@ -101,7 +101,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 						}
 
 						// must use peek() so we don't modify col prematurely
-						FoundationMove m = new WastePileToFoundationMove(wastePile, theCard, foundation, foundation.get().getRank());
+						Move m = new WastePileToFoundationMove(wastePile, theCard, foundation, theGame.foundation1.rank());
 						if (m.doMove (theGame)) {
 							// Success
 							theGame.pushMove (m);

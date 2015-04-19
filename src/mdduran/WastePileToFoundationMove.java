@@ -2,6 +2,7 @@ package mdduran;
 
 import ks.common.games.Solitaire;
 import ks.common.model.Card;
+import ks.common.model.Move;
 import ks.common.model.Pile;
 
 /**
@@ -9,14 +10,14 @@ import ks.common.model.Pile;
  * @author Marco
  *
  */
-public class WastePileToFoundationMove extends FoundationMove {
+public class WastePileToFoundationMove extends Move {
 	Pile wastePile;
 	Card cardBeingDragged;
 	Pile foundation;
 	int rankOfFoundation;
 	
 	public WastePileToFoundationMove(Pile from,Card cardBeingDragged, Pile to, int rankOfFoundation){
-		super(from, cardBeingDragged, to, rankOfFoundation);
+		super();
 		this.wastePile = from;
 	}
 	@Override
@@ -47,7 +48,7 @@ public class WastePileToFoundationMove extends FoundationMove {
 	@Override
 	public boolean valid(Solitaire game) {
 		
-		if(cardBeingDragged.getRank() > foundation.suit()&& !cardBeingDragged.oppositeColor(foundation.get()) ){
+		if(cardBeingDragged.getRank() > foundation.rank()&& !cardBeingDragged.oppositeColor(foundation.get()) ){
 			return true;
 		}
 		if(cardBeingDragged.getRank() == rankOfFoundation && foundation.empty()){

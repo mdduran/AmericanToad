@@ -3,20 +3,21 @@ package mdduran;
 import ks.common.games.Solitaire;
 import ks.common.model.BuildablePile;
 import ks.common.model.Card;
+import ks.common.model.Column;
 import ks.common.model.Move;
 import ks.common.model.Pile;
 
 
 public class WastePileToTableauMove extends Move {
 	Pile wastePile;
-	BuildablePile tableau;
+	Column tableau;
 	Card cardBeingMoved;
 	int rankOfTableau;
-	public WastePileToTableauMove(Pile from, Card cardBeingMoved, BuildablePile to,
+	public WastePileToTableauMove(Pile from, Card cardBeingMoved, Column tableau2,
 			int rankOfTableau) {
 		this.wastePile = from;
 		this.cardBeingMoved = cardBeingMoved;
-		this.tableau = to;
+		this.tableau = tableau2;
 		this.rankOfTableau = rankOfTableau;
 	}
 	@Override

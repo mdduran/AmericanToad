@@ -21,7 +21,7 @@ public class FoundationMove extends Move {
 	
 	@Override
 	public boolean doMove(Solitaire game) {
-		if(!valid(game) && stack.empty()){return false;}
+		if(!valid(game) && !stack.empty()){return false;}
 		//take card off of the top of the stack
 		Card c = stack.get();
 		foundationPile.add(c);

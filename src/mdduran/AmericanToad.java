@@ -48,10 +48,24 @@ public class AmericanToad extends Solitaire {
 		initializeView();
 		initializeControllers();
 		
-		//make a for loop to deal cards to each of the tableau piles
-		//make a for loop to deal 19 cards to the reserve pile
+		//make a for loop to deal cards to reserve piles
+		for(int i = 0; i <= 18; i++){
+			reserveColumn.add(deck.get());
+		}
+		
+		//deal one card to each of the tableau piles
+		tableau1.add(deck.get());
+		tableau2.add(deck.get());
+		tableau3.add(deck.get());
+		tableau4.add(deck.get());
+		tableau5.add(deck.get());
+		tableau6.add(deck.get());
+		tableau7.add(deck.get());
+		tableau8.add(deck.get());
 		//deal one card to the first foundation pile
+		foundation1.add(deck.get());
 		//deal one card to the waste pile
+		wastePile.add(deck.get());
 		
 		updateScore(0);
 		
@@ -71,7 +85,7 @@ public class AmericanToad extends Solitaire {
 		container.addWidget(wastePileView);
 		//Shows the reserve column
 		reserveColumnView = new ColumnView(reserveColumn);
-		reserveColumnView.setBounds(20, 20, ci.getWidth(), ci.getHeight());
+		reserveColumnView.setBounds(20, 20, ci.getWidth(), ci.getHeight()*19);
 		container.addWidget(reserveColumnView);
 		//Shows the ScoreView
 		scoreView = new IntegerView(score);
@@ -111,14 +125,14 @@ public class AmericanToad extends Solitaire {
 		tableauView6 = new ColumnView(tableau6);
 		tableauView7 = new ColumnView(tableau7);
 		tableauView8 = new ColumnView(tableau8);
-		tableauView1.setBounds(40 + ci.getWidth(), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView2.setBounds(60+(2 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView3.setBounds(80+(3 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView4.setBounds(100+(4 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView5.setBounds(120+(5 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView6.setBounds(140+(6 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView7.setBounds(160+(7 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
-		tableauView8.setBounds(180+(8 * ci.getWidth()), 60 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight());
+		tableauView1.setBounds(40 + ci.getWidth(), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView2.setBounds(60+(2 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView3.setBounds(80+(3 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView4.setBounds(100+(4 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView5.setBounds(120+(5 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView6.setBounds(140+(6 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView7.setBounds(160+(7 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
+		tableauView8.setBounds(180+(8 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
 		container.addWidget(tableauView1);
 		container.addWidget(tableauView2);
 		container.addWidget(tableauView3);
@@ -198,7 +212,7 @@ public class AmericanToad extends Solitaire {
 	}
 	public Dimension getPreferredSize() {//overrides parent method
 		// default starting dimensions...
-		return new Dimension(870, 740);
+		return new Dimension(880, 766);
 	}
 
 	private void initializeModel(int seed) {
