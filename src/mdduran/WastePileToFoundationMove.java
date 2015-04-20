@@ -4,7 +4,6 @@ import ks.common.games.Solitaire;
 import ks.common.model.Card;
 import ks.common.model.Move;
 import ks.common.model.Pile;
-import ks.common.model.Stack;
 
 /**
  * Move card from top of the waste pile to the top of the foundation pile
@@ -12,12 +11,12 @@ import ks.common.model.Stack;
  *
  */
 public class WastePileToFoundationMove extends Move {
-	Stack wastePile;
+	Pile wastePile;
 	Card cardBeingDragged;
 	Pile foundation;
 	AmericanToad theGame;
 	
-	public WastePileToFoundationMove(Stack from,Card cardBeingDragged, Pile to, AmericanToad theGame){
+	public WastePileToFoundationMove(Pile from,Card cardBeingDragged, Pile to, AmericanToad theGame){
 		super();
 		this.wastePile = from;
 		this.cardBeingDragged = cardBeingDragged;
