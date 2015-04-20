@@ -112,7 +112,6 @@ public class AmericanToadTableauController extends java.awt.event.MouseAdapter {
 		
 
 		Column toColumn = (Column) src.getModelElement();
-		System.out.println(c.getDragSource().getName());
 		// Try to make the move
 		//if frompile is a wastepile, try this move
 		if(c.getDragSource().equals(theGame.wastePileView)){

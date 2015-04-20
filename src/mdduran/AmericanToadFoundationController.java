@@ -161,7 +161,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 		
 
 		Pile toPile = (Pile) src.getModelElement();
-		System.out.println(c.getDragSource().getName());
+		
 		// Try to make the move
 		//if frompile is a wastepile, try this move
 		if(c.getDragSource().equals(theGame.wastePileView)){

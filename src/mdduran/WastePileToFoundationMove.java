@@ -53,7 +53,10 @@ public class WastePileToFoundationMove extends Move {
 		if(foundation.empty() && cardBeingDragged.getRank() == theGame.getRankOfFoundation()){
 			validation = true;
 		}
-		else if(!foundation.empty() && cardBeingDragged.getRank() > foundation.peek().getRank() && cardBeingDragged.getSuit() == foundation.peek().getSuit()){
+		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingDragged.getRank() == 1){
+			validation = true;
+		}
+		else if(!foundation.empty() && cardBeingDragged.getRank() == foundation.peek().getRank()+1 && cardBeingDragged.getSuit() == foundation.peek().getSuit()){
 			validation = true;
 		}
 		

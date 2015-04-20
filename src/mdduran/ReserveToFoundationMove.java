@@ -42,7 +42,10 @@ public class ReserveToFoundationMove extends Move{
 		if(foundation.empty() && cardBeingMoved.getRank() ==  theGame.getRankOfFoundation()){
 			validation = true;
 		}
-		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() > foundation.rank()){
+		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingMoved.getRank() == 1){
+			validation = true;
+		}
+		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() == foundation.rank()+1){
 			validation = true;
 		}
 		return validation;

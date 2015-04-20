@@ -32,13 +32,22 @@ public class AmericanToadDeckController extends SolitaireReleasedAdapter {
 	 * no drag is ever achieved, and we simply deal upon the press.
 	 */
 	public void mousePressed (java.awt.event.MouseEvent me) {
-
-		// Attempting a DrawCardMove
-		Move m = new DrawCardMove (deck, wastePile);
-		if (m.doMove(theGame)) {
-			theGame.pushMove (m);     // Successful Draw Move
-			theGame.refreshWidgets(); // refresh updated widgets.
+		if(!deck.empty()){
+			// Attempting a DrawCardMove
+			Move m = new DrawCardMove (deck, wastePile);
+			if (m.doMove(theGame)) {
+				theGame.pushMove (m);     // Successful Draw Move
+				theGame.refreshWidgets(); // refresh updated widgets.
+			}
 		}
+		else{
+			Move m = new ResetDeckMove(deck, wastePile);
+			if(m.doMove(theGame)){
+				theGame.pushMove(m);
+				theGame.refreshWidgets();
+			}
+		}
+		
 	}
 
 }

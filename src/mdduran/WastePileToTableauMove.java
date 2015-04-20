@@ -18,7 +18,7 @@ public class WastePileToTableauMove extends Move {
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
-		if(!valid(game) || wastePile.empty()){return false;}
+		if(!valid(game)){return false;}
 		//take card off of the top of the stack
 		tableau.add(cardBeingMoved);
 		return true;

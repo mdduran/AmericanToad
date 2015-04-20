@@ -25,6 +25,7 @@ public class TableauToFoundationMove extends Move {
 			return false;
 		}
 		foundation.add(cardBeingMoved);
+		game.updateScore(+1);
 		return true;
 	}
 	@Override
@@ -33,6 +34,7 @@ public class TableauToFoundationMove extends Move {
 			return false;
 		}
 		tableauColumn.add(foundation.get());
+		game.updateScore(-1);
 		return true;
 	}
 	@Override
@@ -41,7 +43,10 @@ public class TableauToFoundationMove extends Move {
 		if(foundation.empty() && cardBeingMoved.getRank() == theGame.getRankOfFoundation()){
 			validation = true;
 		}
-		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() > foundation.rank()){
+		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingMoved.getRank() == 1){
+			validation = true;
+		}
+		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() == foundation.rank()+1){
 			validation = true;
 		}
 		
