@@ -37,8 +37,10 @@ public class AmericanToad extends Solitaire {
 	}
 
 	@Override
-	public boolean hasWon() {
-		// TODO Auto-generated method stub
+	public boolean hasWon() {//if your score is equal to 103 this occurs when you put all of the cards in the foundation piles
+		if(score.getValue() == 103){
+			return true;
+		}
 		return false;
 	}
 
@@ -64,6 +66,7 @@ public class AmericanToad extends Solitaire {
 		tableau8.add(deck.get());
 		//deal one card to the first foundation pile
 		foundation1.add(deck.get());
+		this.setRankOfFoundation();
 		//deal one card to the waste pile
 		wastePile.add(deck.get());
 		
@@ -72,7 +75,6 @@ public class AmericanToad extends Solitaire {
 	}
 
 	private void initializeView() {
-		// TODO Auto-generated method stub
 		CardImages ci = getCardImages();
 		container.setDoubleBuffered(true);
 		//Shows the deck
@@ -267,6 +269,16 @@ public class AmericanToad extends Solitaire {
 		
 		updateNumberCardsLeft(104);
 		updateScore(0);
+	}
+	
+	/**Sets the initial rank of the foundation*/
+	public void setRankOfFoundation(){
+		this.rankOfFoundation = foundation1.peek().getRank();
+	}
+	
+	/**Gets the initial rank of the foundation*/
+	public int getRankOfFoundation(){
+		return this.rankOfFoundation;
 	}
 	
 	/** Code to launch solitaire variation */

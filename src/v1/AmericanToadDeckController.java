@@ -16,7 +16,7 @@ public class AmericanToadDeckController extends SolitaireReleasedAdapter {
 
 	public AmericanToadDeckController(Solitaire game) {
 		super(game);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	/**

@@ -4,6 +4,7 @@ import ks.common.games.Solitaire;
 import ks.common.model.Card;
 import ks.common.model.Move;
 import ks.common.model.Pile;
+import ks.common.model.Stack;
 
 /**
  * Move card from top of the waste pile to the top of the foundation pile
@@ -11,21 +12,23 @@ import ks.common.model.Pile;
  *
  */
 public class WastePileToFoundationMove extends Move {
-	Pile wastePile;
+	Stack wastePile;
 	Card cardBeingDragged;
 	Pile foundation;
-	int rankOfFoundation;
+	AmericanToad theGame;
 	
-	public WastePileToFoundationMove(Pile from,Card cardBeingDragged, Pile to, int rankOfFoundation){
+	public WastePileToFoundationMove(Stack from,Card cardBeingDragged, Pile to, AmericanToad theGame){
 		super();
 		this.wastePile = from;
+		this.cardBeingDragged = cardBeingDragged;
+		this.foundation = to;
+		this.theGame = theGame;
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
 		if(!valid(game)){return false;}
-		//take top card off of wastepile
-		Card c = wastePile.get();
-		foundation.add(c);
+		
+		foundation.add(cardBeingDragged);
 		game.updateScore(+1);
 		return true;
 		//move on to top of foundation
@@ -36,25 +39,26 @@ public class WastePileToFoundationMove extends Move {
 
 	@Override
 	public boolean undo(Solitaire game) {
-		if(!valid(game)){
+		if(foundation.empty()){
 			return false;
 		}
-		Card c = foundation.get();
-		wastePile.add(c);
+		
+		wastePile.add(foundation.get());
 		game.updateScore(-1);
 		return true;
 	}
 
 	@Override
 	public boolean valid(Solitaire game) {
+		boolean validation = false;
+		if(foundation.empty() && cardBeingDragged.getRank() == theGame.getRankOfFoundation()){
+			validation = true;
+		}
+		else if(!foundation.empty() && cardBeingDragged.getRank() > foundation.peek().getRank() && cardBeingDragged.getSuit() == foundation.peek().getSuit()){
+			validation = true;
+		}
 		
-		if(cardBeingDragged.getRank() > foundation.rank()&& !cardBeingDragged.oppositeColor(foundation.get()) ){
-			return true;
-		}
-		if(cardBeingDragged.getRank() == rankOfFoundation && foundation.empty()){
-			return true;
-		}
-		return false;
+		return validation;
 		
 	}
 

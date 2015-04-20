@@ -10,29 +10,42 @@ import ks.common.model.Pile;
 public class TableauToFoundationMove extends Move {
 	Pile foundation;
 	Column tableauColumn;
-	int rankOfFoundation;
 	Card cardBeingMoved;
-	public TableauToFoundationMove(Column from, Card cardBeingMoved, Pile to,
-			int rankOfFoundation) {
+	AmericanToad theGame;
+	public TableauToFoundationMove(Column from, Card cardBeingMoved, Pile to, AmericanToad theGame) {
 		super();
 		this.tableauColumn = from;
 		this.foundation = to;
-		
+		this.cardBeingMoved = cardBeingMoved;
+		this.theGame = theGame;
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!valid(game)){
+			return false;
+		}
+		foundation.add(cardBeingMoved);
+		return true;
 	}
 	@Override
 	public boolean undo(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		if(foundation.empty()){
+			return false;
+		}
+		tableauColumn.add(foundation.get());
+		return true;
 	}
 	@Override
 	public boolean valid(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean validation = false;
+		if(foundation.empty() && cardBeingMoved.getRank() == theGame.getRankOfFoundation()){
+			validation = true;
+		}
+		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() > foundation.rank()){
+			validation = true;
+		}
+		
+		return validation;
 	}
 
 }

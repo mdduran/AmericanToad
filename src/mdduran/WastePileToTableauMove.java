@@ -1,7 +1,6 @@
 package mdduran;
 
 import ks.common.games.Solitaire;
-import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
@@ -12,42 +11,37 @@ public class WastePileToTableauMove extends Move {
 	Pile wastePile;
 	Column tableau;
 	Card cardBeingMoved;
-	int rankOfTableau;
-	public WastePileToTableauMove(Pile from, Card cardBeingMoved, Column tableau2,
-			int rankOfTableau) {
-		this.wastePile = from;
+	public WastePileToTableauMove(Pile wastePile, Card cardBeingMoved, Column tableau) {
+		this.wastePile = wastePile;
 		this.cardBeingMoved = cardBeingMoved;
-		this.tableau = tableau2;
-		this.rankOfTableau = rankOfTableau;
+		this.tableau = tableau;
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
-		if(!valid(game) && wastePile.empty()){return false;}
+		if(!valid(game) || wastePile.empty()){return false;}
 		//take card off of the top of the stack
-		Card c = wastePile.get();
-		tableau.add(c);
-		game.updateScore(+1);
+		tableau.add(cardBeingMoved);
 		return true;
 	}
 
 	@Override
 	public boolean undo(Solitaire game) {
-		if(!valid(game)){return false;}
-		Card c = tableau.get();
-		wastePile.add(c);
-		game.updateScore(-1);
+		if(tableau.empty()){return false;}
+		wastePile.add(tableau.get());
 		return true;
 	}
 
 	@Override
 	public boolean valid(Solitaire game) {
-		if(cardBeingMoved.getRank() < tableau.rank() && !cardBeingMoved.oppositeColor(tableau.get())){
-			return true;
+		boolean validation = false;
+		if(!tableau.empty() && cardBeingMoved.getRank() == tableau.rank()-1 && cardBeingMoved.getSuit() == tableau.suit()){
+			validation = true;
 		}
-		if(cardBeingMoved.getRank() == rankOfTableau && tableau.empty()){
-			return true;
+		else if(tableau.empty()){
+			validation = true;
 		}
-		return false;
+		
+		return validation;
 	}
 	
 }

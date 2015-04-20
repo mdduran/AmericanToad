@@ -111,7 +111,7 @@ public class AmericanToadReserveController extends SolitaireReleasedAdapter {
 		Column toColumn = (Column) src.getModelElement();
 
 		// Try to make the move
-		Move m = new ReserveToTableauMove (fromColumn, theCard, toColumn, toColumn.get().getRank());
+		Move m = new ReserveToTableauMove (fromColumn, theCard, toColumn);
 		if (m.doMove (theGame)) {
 			// Successful move!  
 			// add move to our set of moves

@@ -21,7 +21,6 @@ public class DrawCardMove extends Move {
 	
 	@Override
 	public boolean doMove(Solitaire game) {
-		// TODO Auto-generated method stub
 		if(!valid(game)){ return false;}
 		
 		Card card = deck.get();

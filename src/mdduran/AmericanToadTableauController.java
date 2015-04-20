@@ -1,9 +1,5 @@
 package mdduran;
 
-import heineman.idiot.MoveCardMove;
-
-import java.awt.event.MouseEvent;
-
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
@@ -27,87 +23,6 @@ public class AmericanToadTableauController extends java.awt.event.MouseAdapter {
 		this.theGame = theGame;
 		this.src = tableau;
 	}
-//	/**
-//	 * Coordinate reaction to the completion of a Drag Event.
-//	 * <p>
-//	 * A bit of a challenge to construct the appropriate move, because cards
-//	 * can be dragged both from the WastePile (as a CardView object) and the 
-//	 * BuildablePileView (as a ColumnView).
-//	 * @param me java.awt.event.MouseEvent
-//	 */
-//	public void mouseReleased(MouseEvent me) {
-//		Container c = theGame.getContainer();
-//
-//		/** Return if there is no card being dragged chosen. */
-//		Widget draggingWidget = c.getActiveDraggingObject();
-//		if (draggingWidget == Container.getNothingBeingDragged()) {
-//			System.err.println ("AmericanToadTableauController::mouseReleased() unexpectedly found nothing being dragged.");
-//			c.releaseDraggingObject();		
-//			return;
-//		}
-//
-//		/** Must be cardview widget */
-//		
-//		CardView cardView = (CardView) draggingWidget;
-//		Card theCard = (Card) cardView.getModelElement();
-//		Widget fromWidget = c.getDragSource();
-//		if(theCard == null){
-//			System.err.println("AmericanToad::releaseCardController(): somehow the cardview model element is null ");
-//			return;
-//		}
-//		Column fromColumn = (Column) fromWidget.getModelElement();
-//		Stack toStack = (Stack) src.getModelElement();
-//		
-//		TableauMove m = new TableauMove(fromColumn, theCard, toStack, fromColumn.get().getRank());
-//		
-//		
-//		Column tableau = (Column) src.getModelElement();
-//		if(fromWidget instanceof ColumnView){
-//			//coming from column pile
-//			Column fromPile = (Column) fromWidget.getModelElement();
-//			/** Must be the ColumnView widget being dragged. */
-//			ColumnView columnView = (ColumnView) draggingWidget;
-//			Column col = (Column) columnView.getModelElement();
-//			if(col == null){
-//				System.err.println("AmericanToadTableauController::mouseReleased(): somehow ColumnView model element is null.");
-//				c.releaseDraggingObject();
-//				return;
-//			}
-//			// must use peek() so we don't modify col prematurely. Here is a HACK! Presumably
-//			// we only want the Move object to know things about the move, but we have to put
-//			// in a check to verify that Column is of size one. NO good solution that I can
-//			// see right now.
-//			if (col.count() != 1) {
-//				fromWidget.returnWidget (draggingWidget);  // return home
-//			} else {
-//				Move m2 = new TableauMove(fromPile, col.peek(), tableau, tableau.get().getRank());
-//				if(m2.doMove (theGame)){
-//					//Success
-//					theGame.pushMove(m);
-//				}
-//				else{
-//					fromWidget.returnWidget(draggingWidget);
-//				}
-//			}
-//		}
-//		else{
-//			//Coming from a waste [number of cards being dragged must be one]
-//			Pile wastePile = (Pile) fromWidget.getModelElement();
-//			
-//			
-//			//must use peek so we do not modify the column prematurely
-//			Move m3 = new WastePileToTableauMove(wastePile, theCard, tableau, tableau.get().getRank());
-//			if(m3.doMove(theGame)){
-//				//Success
-//				theGame.pushMove(m);
-//			}
-//			else{
-//				fromWidget.returnWidget(draggingWidget);
-//			}
-//		}
-//		c.releaseDraggingObject();
-//		c.repaint();
-//	}
 	
 	/**
 	 * Coordinate reaction to the beginning of a Drag Event.
@@ -193,21 +108,49 @@ public class AmericanToadTableauController extends java.awt.event.MouseAdapter {
 			System.err.println ("AmericanToad::releaseCardController(): somehow fromWidget is null.");
 			return;
 		}
-		Column fromColumn = (Column) fromWidget.getModelElement();
+		Stack from = (Stack) fromWidget.getModelElement();
+		
 
 		Column toColumn = (Column) src.getModelElement();
-
+		System.out.println(c.getDragSource().getName());
 		// Try to make the move
-		Move m = new TableauToTableauMove (fromColumn, theCard, toColumn, toColumn.get().getRank());
-		if (m.doMove (theGame)) {
-			// Successful move!  
-			// add move to our set of moves
-			theGame.pushMove (m);
-		} else {
-			// Invalid move. Restore dragging widget to source
-			fromWidget.returnWidget (w);
+		//if frompile is a wastepile, try this move
+		if(c.getDragSource().equals(theGame.wastePileView)){
+			Pile fromPile = (Pile) from;
+			Move m = new WastePileToTableauMove (fromPile, theCard, toColumn);
+			if (m.doMove (theGame)) {
+				// Successful move!  
+				// add move to our set of moves
+				theGame.pushMove (m);
+			} else {
+				// Invalid move. Restore dragging widget to source
+				fromWidget.returnWidget (w);
+			}
 		}
-
+		else if(c.getDragSource().equals(theGame.reserveColumnView)){
+			Column fromReserve = (Column) from;
+			Move m = new ReserveToTableauMove (fromReserve, theCard, toColumn);
+			if (m.doMove (theGame)) {
+				// Successful move!  
+				// add move to our set of moves
+				theGame.pushMove (m);
+			} else {
+				// Invalid move. Restore dragging widget to source
+				fromWidget.returnWidget (w);
+			}
+		}
+		else{
+			Column fromTableau = (Column) from;
+			Move m = new TableauToTableauMove (fromTableau, theCard, toColumn);
+			if (m.doMove (theGame)) {
+				// Successful move!  
+				// add move to our set of moves
+				theGame.pushMove (m);
+			} else {
+				// Invalid move. Restore dragging widget to source
+				fromWidget.returnWidget (w);
+			}
+		}
 		c.releaseDraggingObject();    // also releases dragSource
 
 		c.repaint();

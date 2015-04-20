@@ -3,12 +3,10 @@ package mdduran;
 
 import java.awt.event.MouseEvent;
 
-import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
 import ks.common.model.Pile;
-import ks.common.view.BuildablePileView;
 import ks.common.view.CardView;
 import ks.common.view.ColumnView;
 import ks.common.view.Container;
@@ -60,9 +58,9 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 		//Determine the To Pile
 		Pile foundation = (Pile) src.getModelElement();
 		
-		if(fromWidget instanceof BuildablePileView){
+		if(fromWidget instanceof ColumnView){
 			//coming from a buildable pile [user may be trying to move multiple cards]
-			BuildablePile fromPile = (BuildablePile) fromWidget.getModelElement();
+			Column fromColumn = (Column) fromWidget.getModelElement();
 			/** Must be the ColumnView widget being dragged. */
 			ColumnView columnView = (ColumnView) draggingWidget;
 			Column col = (Column) columnView.getModelElement();
@@ -78,7 +76,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 						if (col.count() != 1) {
 							fromWidget.returnWidget (draggingWidget);  // return home
 						} else {
-							Move m = new FoundationMove(fromPile, col.peek(), foundation, foundation.get().getRank());
+							Move m = new FoundationMove(fromColumn, col.peek(), foundation, theGame.foundation1.rank());
 
 							if (m.doMove (theGame)) {
 								// Success
@@ -101,7 +99,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 						}
 
 						// must use peek() so we don't modify col prematurely
-						Move m = new WastePileToFoundationMove(wastePile, theCard, foundation, theGame.foundation1.rank());
+						Move m = new WastePileToFoundationMove(wastePile, theCard, foundation,theGame);
 						if (m.doMove (theGame)) {
 							// Success
 							theGame.pushMove (m);
@@ -112,7 +110,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 
 					// Ahhhh. Instead of dealing with multiple 'instanceof' difficulty, why don't we allow
 					// for multiple controllers to be set on the same widget? Each will be invoked, one
-					// at a time, until someone returns TRUE (stating that they are processing the event).
+					// at a time, until someone returns TRUE+ (stating that they are processing the event).
 					// Then we have controllers for each MOVE TYPE, not just for each entity. In this way,
 					// I wouldn't have to convert the CardView from wastePile into a ColumnView. I would
 					// still have to do some sort of instanceOf check, however, to validate: But if the

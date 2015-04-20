@@ -9,27 +9,43 @@ import ks.common.model.Pile;
 public class ReserveToFoundationMove extends Move{
 	Column reserveColumn;
 	Pile foundation;
-	int rankOfFoundation;
 	Card cardBeingMoved;
-	public ReserveToFoundationMove(Column from, Card cardBeingMoved, Pile to,
-			int rankOfFoundation) {
+	AmericanToad theGame;
+	public ReserveToFoundationMove(Column from, Card cardBeingMoved, Pile to, AmericanToad theGame) {
 		super();
 		this.reserveColumn = from;
+		this.foundation = to;
+		this.cardBeingMoved = cardBeingMoved;
+		this.theGame = theGame;
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		if(!valid(game)){
+			return false;
+		}
+		foundation.add(cardBeingMoved);
+		return true;
+		
 	}
 	@Override
 	public boolean undo(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		if(foundation.empty()){
+			return false;
+		}
+		//undo
+		reserveColumn.add(foundation.get());
+		return true;
 	}
 	@Override
 	public boolean valid(Solitaire game) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean validation = false;
+		if(foundation.empty() && cardBeingMoved.getRank() ==  theGame.getRankOfFoundation()){
+			validation = true;
+		}
+		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() > foundation.rank()){
+			validation = true;
+		}
+		return validation;
 	}
 
 }
