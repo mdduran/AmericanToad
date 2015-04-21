@@ -9,6 +9,7 @@ import ks.launcher.Main;
 public class TestDrawCardMove extends TestCase {
 	public void testSimple(){
 		AmericanToad americanToad = new AmericanToad();
+		@SuppressWarnings("unused")
 		GameWindow gw = Main.generateWindow(americanToad, MultiDeck.OrderBySuit);
 		
 		Card topCard = americanToad.deck.peek();
@@ -18,7 +19,7 @@ public class TestDrawCardMove extends TestCase {
 		
 		dcm.doMove(americanToad);
 		
-		assertEquals(103, americanToad.deck.count());
+		assertEquals(103, americanToad.getNumLeft().getValue());
 		assertEquals(topCard, americanToad.wastePile.peek());
 		int deckvalue = americanToad.getNumLeft().getValue();
 		
@@ -26,6 +27,6 @@ public class TestDrawCardMove extends TestCase {
 		
 		dcm.undo(americanToad);
 		
-		assertEquals(104, americanToad.deck.count());
+		assertEquals(75, americanToad.deck.count());
 	}
 }
