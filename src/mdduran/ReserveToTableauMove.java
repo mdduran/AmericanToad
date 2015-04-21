@@ -35,7 +35,7 @@ public class ReserveToTableauMove extends Move {
 	@Override
 	public boolean valid(Solitaire game) {
 		boolean validation = false;
-		if(tableau.empty() != true && cardBeingMoved.getRank() < tableau.peek().getRank() && cardBeingMoved.getSuit() == tableau.peek().getSuit()){
+		if(tableau.empty() != false){
 			validation = true;
 		}
 		return validation;

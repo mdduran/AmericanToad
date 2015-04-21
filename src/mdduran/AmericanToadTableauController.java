@@ -145,6 +145,11 @@ public class AmericanToadTableauController extends java.awt.event.MouseAdapter {
 				// Successful move!  
 				// add move to our set of moves
 				theGame.pushMove (m);
+				if(fromTableau.empty()){
+					Move autoReserveToTableau = new ReserveToTableauMove(theGame.reserveColumn, theGame.reserveColumn.get(), fromTableau);
+					autoReserveToTableau.doMove(theGame);
+					theGame.pushMove(autoReserveToTableau);
+				}
 			} else {
 				// Invalid move. Restore dragging widget to source
 				fromWidget.returnWidget (w);

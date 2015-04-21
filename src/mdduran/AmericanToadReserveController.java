@@ -1,7 +1,7 @@
 package mdduran;
 
 
-import ks.common.controller.SolitaireReleasedAdapter;
+
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
@@ -10,7 +10,7 @@ import ks.common.view.ColumnView;
 import ks.common.view.Container;
 import ks.common.view.Widget;
 
-public class AmericanToadReserveController extends SolitaireReleasedAdapter {
+public class AmericanToadReserveController extends java.awt.event.MouseAdapter {
 	//American Toad game
 	protected AmericanToad theGame;
 	
@@ -18,8 +18,9 @@ public class AmericanToadReserveController extends SolitaireReleasedAdapter {
 	protected ColumnView src;
 	
 	public AmericanToadReserveController(AmericanToad theGame, ColumnView reserve){
-		super(theGame);
+		super();
 		this.src = reserve;
+		this.theGame = theGame;
 	}
 	
 	/**
@@ -124,4 +125,5 @@ public class AmericanToadReserveController extends SolitaireReleasedAdapter {
 		c.releaseDraggingObject();    // also releases dragSource
 
 		c.repaint();
-	}}
+	}
+}
