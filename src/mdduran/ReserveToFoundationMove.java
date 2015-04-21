@@ -42,12 +42,15 @@ public class ReserveToFoundationMove extends Move{
 		if(foundation.empty() && cardBeingMoved.getRank() ==  theGame.getRankOfFoundation()){
 			validation = true;
 		}
-		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingMoved.getRank() == 1){
+		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingMoved.getRank() == 1 && foundation.count() <= 13){
 			validation = true;
 		}
-		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() == foundation.rank()+1){
+		else if(!foundation.empty() && cardBeingMoved.getSuit() == foundation.suit() && cardBeingMoved.getRank() == foundation.rank()+1
+				&& foundation.count() <= 13){
 			validation = true;
 		}
+		//if there is a full foundation pile, return false
+		
 		return validation;
 	}
 
