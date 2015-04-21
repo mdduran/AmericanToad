@@ -81,6 +81,9 @@ public class ResetDeckMove extends ks.common.model.Move {
 		if(deck.empty()){
 			validation = true;
 		}
+		else{
+			validation = false;
+		}
 		return validation;
 	}
 }
