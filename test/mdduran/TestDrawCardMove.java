@@ -29,4 +29,15 @@ public class TestDrawCardMove extends TestCase {
 		
 		assertEquals(75, americanToad.deck.count());
 	}
+	public void testEmpty(){
+		AmericanToad americanToad = new AmericanToad();
+		GameWindow gw = Main.generateWindow(americanToad, MultiDeck.OrderBySuit);
+		
+		DrawCardMove dcm = new DrawCardMove(americanToad.deck, americanToad.wastePile);
+		while(americanToad.deck.empty() != true){
+			dcm.doMove(americanToad);
+		}
+		assertFalse(dcm.valid(americanToad));
+		assertFalse(dcm.doMove(americanToad));
+	}
 }
