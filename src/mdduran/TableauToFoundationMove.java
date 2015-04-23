@@ -1,6 +1,7 @@
 package mdduran;
 
 import ks.common.games.Solitaire;
+import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
@@ -9,15 +10,16 @@ import ks.common.model.Pile;
 
 public class TableauToFoundationMove extends Move {
 	Pile foundation;
-	Column tableauColumn;
+	BuildablePile tableauColumn;
 	Card cardBeingMoved;
 	AmericanToad theGame;
-	public TableauToFoundationMove(Column from, Card cardBeingMoved, Pile to, AmericanToad theGame) {
+	int rank;
+	public TableauToFoundationMove(BuildablePile from, Card cardBeingMoved, Pile to, int rank) {
 		super();
 		this.tableauColumn = from;
 		this.foundation = to;
 		this.cardBeingMoved = cardBeingMoved;
-		this.theGame = theGame;
+		this.rank = rank;
 	}
 	@Override
 	public boolean doMove(Solitaire game) {
@@ -40,7 +42,7 @@ public class TableauToFoundationMove extends Move {
 	@Override
 	public boolean valid(Solitaire game) {
 		boolean validation = false;
-		if(foundation.empty() && cardBeingMoved.getRank() == theGame.getRankOfFoundation()){
+		if(foundation.empty() && cardBeingMoved.getRank() == this.rank){
 			validation = true;
 		}
 		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingMoved.getRank() == 1 && cardBeingMoved.getSuit() == foundation.suit()

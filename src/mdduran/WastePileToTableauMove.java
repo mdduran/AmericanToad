@@ -1,6 +1,7 @@
 package mdduran;
 
 import ks.common.games.Solitaire;
+import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
@@ -9,9 +10,9 @@ import ks.common.model.Pile;
 
 public class WastePileToTableauMove extends Move {
 	Pile wastePile;
-	Column tableau;
+	BuildablePile tableau;
 	Card cardBeingMoved;
-	public WastePileToTableauMove(Pile wastePile, Card cardBeingMoved, Column tableau) {
+	public WastePileToTableauMove(Pile wastePile, Card cardBeingMoved, BuildablePile tableau) {
 		this.wastePile = wastePile;
 		this.cardBeingMoved = cardBeingMoved;
 		this.tableau = tableau;

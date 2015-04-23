@@ -2,6 +2,7 @@ package mdduran;
 
 
 
+import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
@@ -109,10 +110,10 @@ public class AmericanToadReserveController extends java.awt.event.MouseAdapter {
 		}
 		Column fromColumn = (Column) fromWidget.getModelElement();
 
-		Column toColumn = (Column) src.getModelElement();
+		BuildablePile toTableau = (BuildablePile) src.getModelElement();
 
 		// Try to make the move
-		Move m = new ReserveToTableauMove (fromColumn, theCard, toColumn);
+		Move m = new ReserveToTableauMove (fromColumn, theCard, toTableau);
 		if (m.doMove (theGame)) {
 			// Successful move!  
 			// add move to our set of moves

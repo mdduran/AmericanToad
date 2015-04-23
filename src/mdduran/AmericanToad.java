@@ -5,9 +5,11 @@ import java.awt.Dimension;
 import ks.common.controller.SolitaireMouseMotionAdapter;
 import ks.common.games.Solitaire;
 import ks.common.games.SolitaireUndoAdapter;
+import ks.common.model.BuildablePile;
 import ks.common.model.Column;
 import ks.common.model.MultiDeck;
 import ks.common.model.Pile;
+import ks.common.view.BuildablePileView;
 import ks.common.view.CardImages;
 import ks.common.view.ColumnView;
 import ks.common.view.DeckView;
@@ -22,8 +24,8 @@ public class AmericanToad extends Solitaire {
 	PileView wastePileView;
 	Pile foundation1,foundation2,foundation3,foundation4,foundation5,foundation6,foundation7,foundation8; //Foundation piles
 	PileView foundationView1, foundationView2, foundationView3, foundationView4, foundationView5, foundationView6, foundationView7, foundationView8;//foundation pile views 
-	Column tableau1, tableau2, tableau3, tableau4, tableau5, tableau6, tableau7, tableau8;//tableau
-	ColumnView tableauView1, tableauView2,tableauView3, tableauView4, tableauView5, tableauView6, tableauView7, tableauView8;
+	BuildablePile tableau1, tableau2, tableau3, tableau4, tableau5, tableau6, tableau7, tableau8;//tableau
+	BuildablePileView tableauView1, tableauView2,tableauView3, tableauView4, tableauView5, tableauView6, tableauView7, tableauView8;
 	Column reserveColumn;
 	ColumnView reserveColumnView;
 	int rankOfFoundation;
@@ -119,14 +121,14 @@ public class AmericanToad extends Solitaire {
 		container.addWidget(foundationView7);
 		container.addWidget(foundationView8);
 		//Shows the tableau piles 
-		tableauView1 = new ColumnView(tableau1);
-		tableauView2 = new ColumnView(tableau2);
-		tableauView3 = new ColumnView(tableau3);
-		tableauView4 = new ColumnView(tableau4);
-		tableauView5 = new ColumnView(tableau5);
-		tableauView6 = new ColumnView(tableau6);
-		tableauView7 = new ColumnView(tableau7);
-		tableauView8 = new ColumnView(tableau8);
+		tableauView1 = new BuildablePileView(tableau1);
+		tableauView2 = new BuildablePileView(tableau2);
+		tableauView3 = new BuildablePileView(tableau3);
+		tableauView4 = new BuildablePileView(tableau4);
+		tableauView5 = new BuildablePileView(tableau5);
+		tableauView6 = new BuildablePileView(tableau6);
+		tableauView7 = new BuildablePileView(tableau7);
+		tableauView8 = new BuildablePileView(tableau8);
 		tableauView1.setBounds(40 + ci.getWidth(), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
 		tableauView2.setBounds(60+(2 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
 		tableauView3.setBounds(80+(3 * ci.getWidth()), 50 + (2 * ci.getHeight()), ci.getWidth(), ci.getHeight()*13);
@@ -247,21 +249,21 @@ public class AmericanToad extends Solitaire {
 		model.addElement(wastePile);
 		
 		//add tableau columns
-		tableau1 = new Column("tableau1");
+		tableau1 = new BuildablePile("tableau1");
 		model.addElement(tableau1);
-		tableau2 = new Column("tableau2");
+		tableau2 = new BuildablePile("tableau2");
 		model.addElement(tableau2);
-		tableau3 = new Column("tableau3");
+		tableau3 = new BuildablePile("tableau3");
 		model.addElement(tableau3);
-		tableau4 = new Column("tableau4");
+		tableau4 = new BuildablePile("tableau4");
 		model.addElement(tableau4);
-		tableau5 = new Column("tableau5");
+		tableau5 = new BuildablePile("tableau5");
 		model.addElement(tableau5);
-		tableau6 = new Column("tableau6");
+		tableau6 = new BuildablePile("tableau6");
 		model.addElement(tableau6);
-		tableau7 = new Column("tableau7");
+		tableau7 = new BuildablePile("tableau7");
 		model.addElement(tableau7);
-		tableau8 = new Column("tableau8");
+		tableau8 = new BuildablePile("tableau8");
 		model.addElement(tableau8);
 		//add reserve column
 		reserveColumn = new Column("reserve");
@@ -285,7 +287,7 @@ public class AmericanToad extends Solitaire {
 	public static void main(String[] args){
 		//Seed is to ensure we get the same initial cards every time.
 		//Here the seed is to "order by suit"
-		Main.generateWindow(new AmericanToad(), MultiDeck.OrderBySuit);
+		Main.generateWindow(new AmericanToad(), MultiDeck.OrderByRank);
 		
 	}
 }

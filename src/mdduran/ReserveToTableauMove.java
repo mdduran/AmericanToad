@@ -1,15 +1,16 @@
 package mdduran;
 
 import ks.common.games.Solitaire;
+import ks.common.model.BuildablePile;
 import ks.common.model.Card;
 import ks.common.model.Column;
 import ks.common.model.Move;
 
 public class ReserveToTableauMove extends Move {
 	Column reserve;
-	Column tableau;
+	BuildablePile tableau;
 	Card cardBeingMoved;
-	public ReserveToTableauMove(Column from, Card cardBeingMoved, Column to) {
+	public ReserveToTableauMove(Column from, Card cardBeingMoved,  BuildablePile to) {
 		super();
 		this.reserve = from;
 		this.tableau = to;
