@@ -11,6 +11,7 @@ public class TestWastePileToTableauMove extends TestCase {
 		GameWindow gw = Main.generateWindow(americanToad, MultiDeck.OrderByRank);
 		WastePileToTableauMove wptt = new WastePileToTableauMove(americanToad.wastePile, americanToad.wastePile.get(), americanToad.tableau6);
 		assertTrue(wptt.valid(americanToad));
+		assertTrue(wptt.doMove(americanToad));
 		wptt.doMove(americanToad);
 		assertEquals(americanToad.wastePile.count(), 0);
 		wptt.undo(americanToad);
@@ -22,6 +23,8 @@ public class TestWastePileToTableauMove extends TestCase {
 		WastePileToTableauMove wptt1 = new WastePileToTableauMove(americanToad.wastePile, americanToad.wastePile.get(), americanToad.tableau1);
 		assertTrue(wptt1.valid(americanToad));
 		wptt1.doMove(americanToad);
+		americanToad.tableau1.removeAll();
+		assertFalse(wptt1.undo(americanToad));
 		
 	}
 }

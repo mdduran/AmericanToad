@@ -286,7 +286,7 @@ public class AmericanToad extends Solitaire {
 	/** Code to launch solitaire variation */
 	public static void main(String[] args){
 		//Seed is to ensure we get the same initial cards every time.
-		//Here the seed is to "order by suit"
+		//Here the seed is to "order by rank"
 		Main.generateWindow(new AmericanToad(), MultiDeck.OrderByRank);
 		
 	}

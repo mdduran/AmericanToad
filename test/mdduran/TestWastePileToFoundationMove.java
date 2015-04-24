@@ -91,4 +91,18 @@ public class TestWastePileToFoundationMove extends TestCase {
 		assertFalse(wptf4.doMove(at));
 		wptf4.doMove(at);
 	}
+	
+	public void test6(){
+		AmericanToad at = new AmericanToad();
+		GameWindow gw = Main.generateWindow(at, MultiDeck.OrderBySuit);
+		Card aceD = new Card(Card.ACE, Card.DIAMONDS);
+		Card kingD = new Card(Card.KING, Card.DIAMONDS);
+		at.foundation1.add(kingD);
+		at.wastePile.add(aceD);
+		
+		WastePileToFoundationMove wptf5 = new WastePileToFoundationMove(at.wastePile, at.wastePile.get(), at.foundation1, at);
+		assertTrue(wptf5.valid(at));
+		assertTrue(wptf5.doMove(at));
+		
+	}
 }

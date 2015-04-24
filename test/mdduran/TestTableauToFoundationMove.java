@@ -52,14 +52,24 @@ public class TestTableauToFoundationMove extends TestCase {
 		assertTrue(ttf.valid(americanToad));
 		assertTrue(ttf.doMove(americanToad));
 		ttf.doMove(americanToad);
+		americanToad.foundation1.removeAll();
+		assertFalse(ttf.undo(americanToad));
 		
 		
 	}
 	
 	public void testEmpty(){
 		AmericanToad at = new AmericanToad();
-		gw = Main.generateWindow(at, 0);
-		
+		gw = Main.generateWindow(at, MultiDeck.OrderBySuit);
+		at.tableau1.removeAll();
+		at.foundation1.removeAll();
+		Card testKing = new Card(Card.KING, Card.DIAMONDS);
+		Card testAce = new Card(Card.ACE, Card.DIAMONDS);
+		at.foundation1.add(testKing);
+		at.tableau1.add(testAce);
+		TableauToFoundationMove ttf = new TableauToFoundationMove(at.tableau1, at.tableau1.get(), at.foundation1, at.foundation1.rank());
+		assertTrue(ttf.valid(at));
+		ttf.doMove(at);
 	}
 
 }

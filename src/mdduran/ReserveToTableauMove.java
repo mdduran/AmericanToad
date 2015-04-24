@@ -39,6 +39,9 @@ public class ReserveToTableauMove extends Move {
 		if(tableau.empty() != false){
 			validation = true;
 		}
+		if(!tableau.empty() && cardBeingMoved.getRank() < tableau.rank() && cardBeingMoved.getSuit() == tableau.suit() ){
+			validation = true;
+		}
 		return validation;
 	}
 	

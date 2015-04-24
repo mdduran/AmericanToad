@@ -26,13 +26,14 @@ public class TableauToTableauMove extends Move{
 		if(!valid(game)){
 			return false;
 		}
-		if(colBeingMoved == null){
-			fromTableau.select(numCards);
-			Stack st = fromTableau.getSelected();
-			toTableau.push(st);
-		} else{
+//		if(colBeingMoved == null){
+//			fromTableau.select(numCards);
+//			Stack st = fromTableau.getSelected();
+//			toTableau.push(st);
+//		}
+		//else{
 			toTableau.push(colBeingMoved);
-		}
+		//}
 		
 		return true;
 	}
@@ -52,14 +53,15 @@ public class TableauToTableauMove extends Move{
 		boolean validation = false;
 		//If move has not happened yet, we must extract the desired column to move.
 		Column targetCol;
-		if(colBeingMoved == null){
-			targetCol = new Column();
-			for(int i = numCards; i >=1; i--){
-				targetCol.add(fromTableau.peek(fromTableau.count() - i));
-			}
-		} else{
+//		if(colBeingMoved == null){
+//			targetCol = new Column();
+//			for(int i = numCards; i >=1; i--){
+//				targetCol.add(fromTableau.peek(fromTableau.count() - i));
+//			}
+//		}
+		//else{
 			targetCol = colBeingMoved;
-		}
+		//}
 		if(toTableau.empty() != false){
 			validation = true;
 		}
