@@ -25,20 +25,40 @@ public class TestTableauToFoundationMove extends TestCase {
 	public void testSimple(){
 		americanToad = new AmericanToad();
 		 gw = Main.generateWindow(americanToad, MultiDeck.OrderBySuit);
-//		TableauToFoundationMove ttf = new TableauToFoundationMove(americanToad.tableau8, americanToad.tableau8.peek(), americanToad.foundation1, americanToad.getRankOfFoundation());
-//		assertTrue(ttf.valid(americanToad));
-//		ttf.doMove(americanToad);
-//		ttf.undo(americanToad);
-//		assertTrue(ttf.undo(americanToad));
+		TableauToFoundationMove ttf = new TableauToFoundationMove(americanToad.tableau8, americanToad.tableau8.peek(), americanToad.foundation1, americanToad.getRankOfFoundation());
+		assertTrue(ttf.valid(americanToad));
+		assertTrue(ttf.doMove(americanToad));
+		ttf.doMove(americanToad);
+		assertTrue(ttf.undo(americanToad));
+		ttf.undo(americanToad);
+		
 	}
 	
 	public void testPlacingAce(){
 		 americanToad = new AmericanToad();
 		 gw = Main.generateWindow(americanToad, MultiDeck.OrderByRank);
-//		TableauToFoundationMove ttf = new TableauToFoundationMove(americanToad.tableau8, americanToad.tableau8.peek(), americanToad.foundation2, americanToad.getRankOfFoundation() );
-	//	assertTrue(ttf.valid(americanToad));
-		//ttf.doMove(americanToad);
+		 americanToad.foundation1.removeAll();
+		 Card testAce = new Card(Card.ACE, Card.CLUBS);
+		 Card testKing = new Card(Card.KING, Card.CLUBS);
+		 americanToad.tableau1.add(testAce);
+		 americanToad.foundation1.add(testKing);
+		 assertFalse(americanToad.foundation1.empty());
+		 assertEquals(americanToad.tableau1.get().getRank(), Card.ACE);
+		 assertEquals(americanToad.foundation1.get().getRank(), Card.KING);
+		 assertTrue(americanToad.foundation1.count() <= 13);
+		 assertTrue(americanToad.foundation1.count() != 13);
+		 
+		TableauToFoundationMove ttf = new TableauToFoundationMove(americanToad.tableau1, americanToad.tableau1.peek(), americanToad.foundation1, americanToad.getRankOfFoundation()+2);
+		assertTrue(ttf.valid(americanToad));
+		assertTrue(ttf.doMove(americanToad));
+		ttf.doMove(americanToad);
 		
+		
+	}
+	
+	public void testEmpty(){
+		AmericanToad at = new AmericanToad();
+		gw = Main.generateWindow(at, 0);
 		
 	}
 

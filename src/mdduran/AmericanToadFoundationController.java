@@ -118,10 +118,7 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 				c.releaseDraggingObject();			
 				return;
 			}
-			if(fromTableau.count() != 1){
-				fromWidget.returnWidget(w);
-			}
-			else{
+
 			Move m = new TableauToFoundationMove (fromTableau, col.peek(), toPile, theGame.getRankOfFoundation());
 			if (m.doMove (theGame)) {
 				// Successful move!  
@@ -138,7 +135,6 @@ public class AmericanToadFoundationController extends java.awt.event.MouseAdapte
 				// Invalid move. Restore dragging widget to source
 				fromWidget.returnWidget (w);
 			  }
-			}
 		}
 		c.releaseDraggingObject();    // also releases dragSource
 

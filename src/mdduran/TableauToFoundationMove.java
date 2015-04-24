@@ -45,7 +45,7 @@ public class TableauToFoundationMove extends Move {
 		if(foundation.empty() && cardBeingMoved.getRank() == this.rank){
 			validation = true;
 		}
-		else if(!foundation.empty() && foundation.rank() == 13 && cardBeingMoved.getRank() == 1 && cardBeingMoved.getSuit() == foundation.suit()
+		else if(!foundation.empty() && foundation.rank() == Card.KING && cardBeingMoved.getRank() == Card.ACE && cardBeingMoved.getSuit() == foundation.suit()
 				&& foundation.count() <= 13){
 			validation = true;
 		}
